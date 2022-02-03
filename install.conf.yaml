@@ -1,6 +1,7 @@
 - clean: ["~"]
 
 - link:
+    ~/.zshrc: .zshrc
     ~/.gitconfig: .gitconfig
     ~/.tmux.conf: .tmux.conf
     ~/.config/alacritty:

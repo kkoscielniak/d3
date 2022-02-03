@@ -7,3 +7,6 @@
     ~/.config/alacritty:
       path: config/alacritty
       create: true
+    ~/.config/yabai:
+      path: config/yabai
+      create: true

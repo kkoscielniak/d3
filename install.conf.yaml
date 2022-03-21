@@ -10,3 +10,6 @@
     ~/.config/yabai:
       path: config/yabai
       create: true
+    ~/.config/lsd:
+      path: config/lsd
+      create: true

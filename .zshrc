@@ -1,7 +1,7 @@
 # run tmux immediately
 if [ "$TMUX" = "" ]; then tmux; fi
 
-source ./aliases
+source ~/.d3/aliases
 
 # enable nvm
 export NVM_DIR="$HOME/.nvm"

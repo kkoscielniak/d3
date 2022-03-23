@@ -1,0 +1,31 @@
+# yabai
+
+# Focus the particular space
+alt - 1: yabai -m space --focus 1
+alt - 2: yabai -m space --focus 2
+alt - 3: yabai -m space --focus 3
+alt - 4: yabai -m space --focus 4
+alt - 5: yabai -m space --focus 5
+alt - 6: yabai -m space --focus 6
+cmd + alt - 0: brew services restart yabai
+
+# Move window to particular space
+shift + alt - 1: yabai -m window --space 1
+shift + alt - 2: yabai -m window --space 2
+shift + alt - 3: yabai -m window --space 3
+shift + alt - 4: yabai -m window --space 4
+shift + alt - 5: yabai -m window --space 5
+shift + alt - 6: yabai -m window --space 6
+
+# Toggle space mode between float and bsp
+# cmd + alt - space: yabai -m space --layout \
+#   $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
+
+# Move between yabai windows
+cmd + alt - h: yabai -m window --focus west
+cmd + alt - j: yabai -m window --focus south
+cmd + alt - k: yabai -m window --focus north
+cmd + alt - l: yabai -m window --focus east
+
+# App shortcuts
+cmd + alt - 0x2A: open -a Bitwarden

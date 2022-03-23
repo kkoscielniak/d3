@@ -1,7 +1,7 @@
 font:
   size: 14
   normal:
-    family: "Iosevka"
+    family: "Iosevka Nerd Font"
   use_thin_strokes: true
   
 cursor:
@@ -9,5 +9,6 @@ cursor:
 
 window:
   dynamic_title: true
+  opacity: 0.95
 
 live_config_reload: true

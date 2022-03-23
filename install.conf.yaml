@@ -16,3 +16,7 @@
     ~/.config/lsd:
       path: config/lsd
       create: true
+
+- shell:
+    - command: zplug check
+      description: Install ZSH plugins

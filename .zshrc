@@ -1,3 +1,11 @@
+# add zplug
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+# plugins
+zplug "agkozak/zsh-z"
+zplug load
+
 # run tmux immediately
 if [ "$TMUX" = "" ]; then tmux; fi
 

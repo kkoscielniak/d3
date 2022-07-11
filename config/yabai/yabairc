@@ -25,25 +25,33 @@ yabai -m config left_padding                 10
 yabai -m config right_padding                10
 yabai -m config window_gap                   10
 
-# create up to 9 Mission Control spaces
+# create up to 9 Mission Control Spaces
 SPACES_COUNT="$(yabai -m query --spaces | jq '. | length')"
 MISSING_SPACES_COUNT=$((10-$SPACES_COUNT))
-echo "Creating $MISSING_SPACES_COUNT spaces"
 
+echo "Creating $MISSING_SPACES_COUNT spaces (if missing)"
 repeat $MISSING_SPACES_COUNT {
   yabai -m space --create
 }
 
-# space labels
-yabai -m space 1 --label www
-yabai -m space 2 --label dev
-yabai -m space 3 --label code
-yabai -m space 4 --label term
-yabai -m space 5 --label msgs
-yabai -m space 6 --label musi
+# add labels to the Spaces
+typeset -A SPACE_LABELS
+SPACE_LABELS=(
+  1 www
+  2 dev
+  3 code
+  4 term
+  5 msgs
+  6 music
+)
 
+for key ("${(@k)SPACE_LABELS}") 
+do 
+  echo "Labeling space $key as $SPACE_LABELS[$key]"
+  yabai -m space $key --label $SPACE_LABELS[$key]
+done
 
-# assign apps to the particular spaces
+# assign apps to the particular Spaces
 yabai -m rule --add app="Code" space=3
 yabai -m rule --add app="Alacritty" space=4
 yabai -m rule --add app="Discord" space=5
@@ -52,17 +60,11 @@ yabai -m rule --add app="^Spotify$" space=6
 yabai -m rule --add app="^Endel$" space=6
 
 # disable yabai for particular apps
-yabai -m rule --add app="System Preferences" manage=off
+UNMANAGED_APPS=("System Preferences" AnyConnect Kap Messages Simulator Mail Calendar Cron Todoist Spark)
+for app ("$UNMANAGED_APPS[@]") yabai -m rule --add app=$app manage=off
+
+## disable yabai for particular apps with additional parameters
 yabai -m rule --add app="Bitwarden" manage=off grid=6:4:1:1:2:4
-yabai -m rule --add app="AnyConnect" manage=off
-yabai -m rule --add app="Kap" manage=off
-yabai -m rule --add app="Messages" manage=off
-yabai -m rule --add app="Simulator" manage=off # iOS Simulator
-yabai -m rule --add app="Mail" manage=off
-yabai -m rule --add app="Calendar" manage=off
-yabai -m rule --add app="Cron" manage=off
-yabai -m rule --add app="Todoist" manage=off
-yabai -m rule --add app="Spark" manage=off
 
 # perfectly center floating, nonresizable apps
 events=('application_launched')
@@ -86,9 +88,5 @@ for event in "${events[@]}"; do
     $(eval "${app_query}}") action="${action}"
 done
 
-
-# assign Electron to a 2nd space
-yabai -m rule --add app="^Electron$" space=2
-
-yabai -m signal --add event=space_changed \
-  action="osascript -e 'tell application \"yabai-menubar\" to refresh'"
+# yabai -m signal --add event=space_changed \
+#   action="osascript -e 'tell application \"yabai-menubar\" to refresh'"

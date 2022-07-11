@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/zsh
 
 sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
@@ -25,9 +25,18 @@ yabai -m config left_padding                 10
 yabai -m config right_padding                10
 yabai -m config window_gap                   10
 
+# create up to 9 Mission Control spaces
+SPACES_COUNT="$(yabai -m query --spaces | jq '. | length')"
+MISSING_SPACES_COUNT=$((10-$SPACES_COUNT))
+echo "Creating $MISSING_SPACES_COUNT spaces"
+
+repeat $MISSING_SPACES_COUNT {
+  yabai -m space --create
+}
+
 # space labels
 yabai -m space 1 --label www
-yabai -m space 2 --label misc
+yabai -m space 2 --label dev
 yabai -m space 3 --label code
 yabai -m space 4 --label term
 yabai -m space 5 --label msgs
@@ -40,6 +49,7 @@ yabai -m rule --add app="Alacritty" space=4
 yabai -m rule --add app="Discord" space=5
 yabai -m rule --add app="Slack" space=5
 yabai -m rule --add app="^Spotify$" space=6
+yabai -m rule --add app="^Endel$" space=6
 
 # disable yabai for particular apps
 yabai -m rule --add app="System Preferences" manage=off
@@ -50,8 +60,11 @@ yabai -m rule --add app="Messages" manage=off
 yabai -m rule --add app="Simulator" manage=off # iOS Simulator
 yabai -m rule --add app="Mail" manage=off
 yabai -m rule --add app="Calendar" manage=off
+yabai -m rule --add app="Cron" manage=off
+yabai -m rule --add app="Todoist" manage=off
+yabai -m rule --add app="Spark" manage=off
 
-# perfectly center floated, nonresizable apps
+# perfectly center floating, nonresizable apps
 events=('application_launched')
 apps=('System Preferences' 'AnyConnect')
 

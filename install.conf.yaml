@@ -16,6 +16,9 @@
     ~/.config/lsd:
       path: config/lsd
       create: true
+    ~/.config/karabine:
+      path: config/karabiner
+      create: true
 
 - shell:
     - command: zplug check

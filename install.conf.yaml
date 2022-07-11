@@ -16,7 +16,7 @@
     ~/.config/lsd:
       path: config/lsd
       create: true
-    ~/.config/karabine:
+    ~/.config/karabiner:
       path: config/karabiner
       create: true
 

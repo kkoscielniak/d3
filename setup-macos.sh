@@ -13,8 +13,13 @@ defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 echo "Password immediately after sleep or screen saver will be required"
 
-# Disable Dock showing delay
+# Enable Dock autohide and shorten the delay
+defaults write com.apple.Dock autohide -bool TRUE
 defaults write com.apple.Dock autohide-delay -float 0.0001
 echo "Dock showing delay disabled"
 
+# Hide Desktop icons
+defaults write com.apple.finder CreateDesktop FALSE
+
 killall Dock
+killall Finder

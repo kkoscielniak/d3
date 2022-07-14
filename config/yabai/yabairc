@@ -27,7 +27,7 @@ yabai -m config window_gap                   10
 
 # create up to 9 Mission Control Spaces
 SPACES_COUNT="$(yabai -m query --spaces | jq '. | length')"
-MISSING_SPACES_COUNT=$((10-$SPACES_COUNT))
+MISSING_SPACES_COUNT=$((9-$SPACES_COUNT))
 
 echo "Creating $MISSING_SPACES_COUNT spaces (if missing)"
 repeat $MISSING_SPACES_COUNT {
@@ -88,5 +88,4 @@ for event in "${events[@]}"; do
     $(eval "${app_query}}") action="${action}"
 done
 
-# yabai -m signal --add event=space_changed \
-#   action="osascript -e 'tell application \"yabai-menubar\" to refresh'"
+yabai -m signal --add event=space_changed action="open -gj 'swiftbar://refreshPlugin?name=yabai.1d.js'"

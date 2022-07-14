@@ -18,6 +18,9 @@ defaults write com.apple.Dock autohide -bool TRUE
 defaults write com.apple.Dock autohide-delay -float 0.0001
 echo "Dock showing delay disabled"
 
+# Disable Recent Applications in Dock 
+defaults write com.apple.Dock show-recents -bool FALSE
+
 # Hide Desktop icons
 defaults write com.apple.finder CreateDesktop FALSE
 
@@ -27,3 +30,5 @@ defaults write com.apple.menuextra.clock ShowDayOfWeek 0
 
 killall Dock
 killall Finder
+
+echo "Some of the settings won't work until reboot."

@@ -26,8 +26,8 @@ shift + alt - 9: yabai -m window --space 9
 shift + alt - 0: yabai -m window --space 0
 
 # Toggle space mode between float and bsp
-# cmd + alt - space: yabai -m space --layout \
-#   $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
+cmd + alt - space: yabai -m space --layout \
+  $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
 
 # Move between yabai windows
 cmd + alt - h: yabai -m window --focus west

@@ -10,7 +10,6 @@ brew "glib"
 brew "bitwarden-cli"
 brew "ruby"
 brew "ffmpeg"
-brew "fileicon"
 brew "git"
 brew "git-gui"
 brew "git-open"
@@ -18,6 +17,7 @@ brew "htop"
 brew "hugo"
 brew "jq"
 brew "lsd"
+brew "mas"
 brew "midnight-commander"
 brew "neovim"
 brew "nvm"
@@ -32,7 +32,26 @@ brew "heroku/brew/heroku"
 brew "koekeishiya/formulae/skhd"
 brew "koekeishiya/formulae/yabai"
 cask "alacritty"
+cask "appcleaner"
 cask "font-iosevka"
 cask "font-iosevka-nerd-font"
+cask "hiddenbar"
+cask "kap"
+cask "karabiner-elements"
+cask "maestral"
+cask "mouse-fix"
+cask "obsidian"
 cask "postman"
+cask "raycast"
+cask "skype"
 cask "swiftbar"
+cask "tor-browser"
+mas "1Blocker", id: 1365531024
+mas "Amphetamine", id: 937984704
+mas "Bitwarden", id: 1352778147
+mas "Endel", id: 1484348796
+mas "Slack", id: 803453959
+mas "Spark", id: 1176895641
+mas "The Unarchiver", id: 425424353
+mas "Todoist", id: 585829637
+mas "Xcode", id: 497799835

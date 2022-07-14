@@ -21,5 +21,9 @@ echo "Dock showing delay disabled"
 # Hide Desktop icons
 defaults write com.apple.finder CreateDesktop FALSE
 
+# Hide Date and Day of the week 
+defaults write com.apple.menuextra.clock ShowDayOfMonth 0
+defaults write com.apple.menuextra.clock ShowDayOfWeek 0
+
 killall Dock
 killall Finder

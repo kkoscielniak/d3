@@ -60,7 +60,7 @@ yabai -m rule --add app="^Spotify$" space=6
 yabai -m rule --add app="^Endel$" space=6
 
 # disable yabai for particular apps
-UNMANAGED_APPS=("System Preferences" AnyConnect Kap Messages Simulator Mail Calendar Cron Todoist Spark)
+UNMANAGED_APPS=("System Preferences" AnyConnect Kap Messages Simulator Mail Calendar Cron Todoist Spark Stickies)
 for app ("$UNMANAGED_APPS[@]") yabai -m rule --add app=$app manage=off
 
 ## disable yabai for particular apps with additional parameters

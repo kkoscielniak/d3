@@ -21,6 +21,10 @@ echo "Dock showing delay disabled"
 # Disable Recent Applications in Dock 
 defaults write com.apple.Dock show-recents -bool FALSE
 
+# Set Dock icons size
+defaults write com.apple.dock tilesize -int 32
+defaults write com.apple.dock size-immutable -bool yes # Lock the size
+
 # Hide Desktop icons
 defaults write com.apple.finder CreateDesktop FALSE
 

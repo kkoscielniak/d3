@@ -16,10 +16,3 @@
     ~/.config/lsd:
       path: config/lsd
       create: true
-    ~/.config/karabiner:
-      path: config/karabiner
-      create: true
-
-- shell:
-    - command: zplug check
-      description: Install ZSH plugins

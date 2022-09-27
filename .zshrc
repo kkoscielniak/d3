@@ -27,3 +27,7 @@ export ANDROID_SDK_ROOT=~/Library/Android/sdk
 export ANDROID_HOME=~/Library/Android/sdk
 export ANDROID_NDK_HOME=~/Library/Android/sdk/ndk/21.3.6528147
 PATH="$PATH:~/Library/Android/sdk/platform-tools/"
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+
+# fzf
+source ~/.fzfrc

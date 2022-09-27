@@ -1,6 +1,6 @@
 # dotfiles
 ---
-macOS only.
+macOS only. Still WIP.
 
 ## Installation
 ```sh

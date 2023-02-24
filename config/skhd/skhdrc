@@ -10,7 +10,7 @@ alt - 6: yabai -m space --focus 6
 alt - 7: yabai -m space --focus 7
 alt - 8: yabai -m space --focus 8
 alt - 9: yabai -m space --focus 9
-alt - 0: yabai -m space --focus 0
+alt - 0: yabai -m space --focus 10
 cmd + alt - 0: brew services restart yabai
 
 # Move window to particular space
@@ -23,7 +23,7 @@ shift + alt - 6: yabai -m window --space 6
 shift + alt - 7: yabai -m window --space 7
 shift + alt - 8: yabai -m window --space 8
 shift + alt - 9: yabai -m window --space 9
-shift + alt - 0: yabai -m window --space 0
+shift + alt - 0: yabai -m window --space 10
 
 # Toggle space mode between float and bsp
 cmd + alt - space: yabai -m space --layout \

@@ -22,13 +22,26 @@ yabai -m config mouse_action1 move # LMB + ⌥ + drag to move window
 yabai -m config mouse_action2 resize # RMB + ⌥ + drag to resize window
 yabai -m config mouse_drop_action swap # Swap windows on dragging one onto another
 
-# Disable particular apps 
+# Disable yabai for particular apps
+UNMANAGED_APPS=("System Settings" Kap Simulator Stickies Calculator Finder)
+for app ("$UNMANAGED_APPS[@]") yabai -m rule --add app=$app manage=off
+
+UNMANAGED_CENTERED_APPS=(Bitwarden Messages Calendar)
+for app ("$UNMANAGED_CENTERED_APPS[@]") yabai -m rule --add app=$app manage=off grid=6:4:1:1:2:4
+
+
+
+
+
 
 
 #### OLD CONFIG TO REVISE
+#
+# TODO: Swap windows etc.
+
 yabai -m config window_topmost               off
 yabai -m config window_opacity               off
-yabai -m config window_shadow                off
+yabai -m config window_shadow                on
 yabai -m config active_window_opacity        1.0
 yabai -m config normal_window_opacity        1.0 #0.90
 yabai -m config split_ratio                  0.50
@@ -66,34 +79,4 @@ yabai -m rule --add app="Alacritty" space=4
 yabai -m rule --add app="Discord" space=5
 yabai -m rule --add app="Slack" space=5
 yabai -m rule --add app="^Spotify$" space=6
-yabai -m rule --add app="^Endel$" space=6
-
-# disable yabai for particular apps
-UNMANAGED_APPS=("System Settings" AnyConnect Kap Messages Simulator Mail Calendar Cron Todoist Spark Stickies GPT Flotato)
-for app ("$UNMANAGED_APPS[@]") yabai -m rule --add app=$app manage=off
-
-## disable yabai for particular apps with additional parameters
-yabai -m rule --add app="Bitwarden" manage=off grid=6:4:1:1:2:4
-
-# perfectly center floating, nonresizable apps
-events=('application_launched')
-apps=('System Settings' 'AnyConnect')
-
-read -r -d '' action <<- 'EOF'
-  window="$(yabai -m query --windows --window)"
-  display="$(yabai -m query --displays --window)"
-  coords="$(jq \
-    --argjson window "${window}" \
-    --argjson display "${display}" \
-    -nr '(($display.frame | .x + .w / 2) - ($window.frame.w / 2) | tostring)
-      + ":"
-      + (($display.frame | .y + .h / 2) - ($window.frame.h / 2) | tostring)')"
-  yabai -m window --move "abs:${coords}"
-EOF
-
-(( ${#apps[@]} ))   && app_query="app=\"^($(IFS=\|;echo "${apps[*]}"))\$\""
-for event in "${events[@]}"; do
-  yabai -m signal --add label="${0}_signal_${event}" event="${event}" \
-  $(eval "${app_query}}") action="${action}"
-done
 

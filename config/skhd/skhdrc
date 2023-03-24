@@ -35,5 +35,3 @@ cmd + alt - j: yabai -m window --focus south
 cmd + alt - k: yabai -m window --focus north
 cmd + alt - l: yabai -m window --focus east
 
-# App shortcuts
-cmd + alt - 0x2A: open -a Bitwarden

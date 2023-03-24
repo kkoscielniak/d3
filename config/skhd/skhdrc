@@ -63,3 +63,4 @@ shift + lalt - 9: yabai -m window --space 9 && yabai -m space --focus 9
 
 cmd + lalt - 0: brew services restart yabai # ⇧ + L⌥ + 0 restarts `yabai`
 cmd + lalt - 0x1B: brew services restart skhd # ⇧ + L⌥ + `-` restarts `skhd`
+cmd + lalt - 0x18: brew services restart sketchybar # ⇧ + L⌥ + `=` restarts `sketchybar`

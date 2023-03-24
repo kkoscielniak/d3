@@ -9,7 +9,7 @@ yabai -m config layout                       bsp
 yabai -m config window_placement             second_child
 
 # Gaps
-yabai -m config top_padding     40 
+yabai -m config top_padding     40
 yabai -m config bottom_padding  10
 yabai -m config left_padding    10
 yabai -m config right_padding   10
@@ -36,9 +36,6 @@ for app ("$UNMANAGED_CENTERED_APPS[@]") yabai -m rule --add app=$app manage=off 
 
 
 #### OLD CONFIG TO REVISE
-#
-# TODO: Swap windows etc.
-
 yabai -m config window_topmost               off
 yabai -m config window_opacity               off
 yabai -m config window_shadow                on

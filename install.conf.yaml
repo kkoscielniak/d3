@@ -4,6 +4,7 @@
     ~/.zshrc: .zshrc
     ~/.gitconfig: .gitconfig
     ~/.tmux.conf: .tmux.conf
+    ~/.fzfrc: .fzfrc
     ~/.config/alacritty:
       path: config/alacritty
       create: true
@@ -15,4 +16,7 @@
       create: true
     ~/.config/lsd:
       path: config/lsd
+      create: true
+    ~/.config/nvim: 
+      path: config/nvim
       create: true

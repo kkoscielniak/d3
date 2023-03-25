@@ -9,11 +9,7 @@ sketchybar --bar height=38 \
                  padding_right=10 \
                  color=0x15ffffff
 
-##### Changing Defaults #####
-# We now change some default values that are applied to all further items
-# For a full list of all available item properties see:
-# https://felixkratz.github.io/SketchyBar/config/items
-
+# Defaults
 sketchybar --default icon.font="Hack Nerd Font:Bold:17.0"  \
                      icon.color=0xffffffff                 \
                      label.font="Hack Nerd Font:Bold:14.0" \
@@ -25,23 +21,23 @@ sketchybar --default icon.font="Hack Nerd Font:Bold:17.0"  \
                      icon.padding_left=4                   \
                      icon.padding_right=4
 
-##### Adding Mission Control Space Indicators #####
-# Now we add some mission control spaces:
-# https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
-# to indicate active and available mission control spaces
+# `yabai` spaces
 
-# Get label names from `yabai`
+# https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
+
+# Get space names from `yabai`
 SPACE_ICONS=($(yabai -m query --spaces | jq -cr  '.[] | if (.label | length > 0) then .label else .index end'))
 
 for i in "${!SPACE_ICONS[@]}"
 do
   sid=$(($i+1))
+  SPACENAME=${SPACE_ICONS[$i]}
   WINDOWS_COUNT=$(yabai -m query --windows --space $sid | jq length)
 
-  if [[ $WINDOWS_COUNT -gt 0 ]]; then
-    sketchybar --add space $sid left
-    sketchybar --set $sid associated_space=$sid icon=${SPACE_ICONS[$i]} background.color=0x44ffffff background.corner_radius=5 background.height=20 background.drawing=off label.drawing=off script="$PLUGIN_DIR/space.sh" click_script="yabai -m space --focus $sid"
-  fi
+  # if [[ $WINDOWS_COUNT -gt 0 ]]; then
+    sketchybar --add space $SPACENAME left
+    sketchybar --set $SPACENAME associated_space=$sid icon=${SPACE_ICONS[$i]} label.drawing=off script="$PLUGIN_DIR/space.sh" click_script="yabai -m space --focus $sid"
+  # fi
 done
 
 ##### Adding Left Items #####

@@ -11,11 +11,12 @@ yabai -m config window_topmost on # Make floating windows always on top
 yabai -m config window_shadow float # Add shadows only to floating window
 
 # Gaps
-yabai -m config top_padding     40
+yabai -m config top_padding     10
 yabai -m config bottom_padding  10
 yabai -m config left_padding    10
 yabai -m config right_padding   10
 yabai -m config window_gap      10
+yabai -m config external_bar main:38:0 # Adds padding for sketchybar on external display only
 
 # Mouse settings
 yabai -m config mouse_modifier alt
@@ -31,20 +32,22 @@ for app ("$UNMANAGED_APPS[@]") yabai -m rule --add app=$app manage=off
 UNMANAGED_CENTERED_APPS=(Bitwarden Messages Calendar)
 for app ("$UNMANAGED_CENTERED_APPS[@]") yabai -m rule --add app=$app manage=off grid=6:4:1:1:2:4
 
+
+# assign apps to the particular Spaces
+yabai -m rule --add app="Arc" space=1
+
+SPACE_3_APPS=(Code Neovide VSCodium)
+for app ("$SPACE_3_APPS[@]") yabai -m rule --add app=$app space=3
+
+yabai -m rule --add app="Alacritty" space=4
+
+SPACE_5_APPS=(Slack Discord)
+for app ("$SPACE_5_APPS[@]") yabai -m rule --add app=$app space=5
+
+yabai -m rule --add app="^Spotify$" space=6
+
 # Update Sketchybar once an app has been opened/closed
-
-# yabai -m signal --add event=application_launched action="sketchybar --update"
-# yabai -m signal --add event=application_terminated action="sketchybar --update"
-
-
-
-
-#### OLD CONFIG TO REVISE
-yabai -m config window_opacity               off
-yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        1.0 #0.90
-yabai -m config split_ratio                  0.50
-yabai -m config auto_balance                 off
+## TODO: ^
 
 # create up to 9 Mission Control Spaces
 SPACES_COUNT="$(yabai -m query --spaces | jq '. | length')"
@@ -54,6 +57,7 @@ echo "Creating $MISSING_SPACES_COUNT spaces (if missing)"
 repeat $MISSING_SPACES_COUNT {
   yabai -m space --create
 }
+
 
 # add labels to the Spaces
 typeset -A SPACE_LABELS
@@ -72,10 +76,4 @@ do
   yabai -m space $key --label $SPACE_LABELS[$key]
 done
 
-# assign apps to the particular Spaces
-yabai -m rule --add app="Code" space=3
-yabai -m rule --add app="Alacritty" space=4
-yabai -m rule --add app="Discord" space=5
-yabai -m rule --add app="Slack" space=5
-yabai -m rule --add app="^Spotify$" space=6
 

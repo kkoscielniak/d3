@@ -13,8 +13,11 @@ alt - 9: yabai -m space --focus 9
 alt - 0: yabai -m space --focus 10 # Full screen app
 
 ## Toggle space between float and bsp
-shift + lalt - space: yabai -m space --layout \
+shift + lalt - s: yabai -m space --layout \
   $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
+
+## Toggle gaps
+shift + lalt - g: yabai -m space --toggle padding && yabai -m space --toggle gap
 
 
 # WINDOWS
@@ -57,6 +60,9 @@ shift + lalt - 6: yabai -m window --space 6 && yabai -m space --focus 6
 shift + lalt - 7: yabai -m window --space 7 && yabai -m space --focus 7
 shift + lalt - 8: yabai -m window --space 8 && yabai -m space --focus 8
 shift + lalt - 9: yabai -m window --space 9 && yabai -m space --focus 9
+
+# Toggle borders
+shift + lalt - b: yabai -m window --toggle border
 
 
 # OTHERS

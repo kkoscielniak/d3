@@ -36,6 +36,9 @@ for app ("$UNMANAGED_CENTERED_APPS[@]") yabai -m rule --add app=$app manage=off 
 # assign apps to the particular Spaces
 yabai -m rule --add app="Arc" space=1
 
+SPACE_2_APPS=("Parallels Desktop" "Windows 11")
+for app ("$SPACE_2_APPS[@]") yabai -m rule --add app=$app space=2
+
 SPACE_3_APPS=(Code Neovide VSCodium)
 for app ("$SPACE_3_APPS[@]") yabai -m rule --add app=$app space=3
 

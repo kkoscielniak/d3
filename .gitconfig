@@ -3,3 +3,5 @@
 	email = krystian@koscielniak.pro
 [core]
 	editor = nvim
+[alias]
+  remove-merged = !git branch --merged | egrep -v \"(^\\*|master|main|dev)\" | xargs git branch -d

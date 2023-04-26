@@ -20,13 +20,13 @@ yabai -m config external_bar main:38:0 # Adds padding for sketchybar on external
 
 # Mouse settings
 yabai -m config mouse_modifier alt
-yabai -m config mouse_follows_focus on # Move cursor to window selected by keyboard
+# yabai -m config mouse_follows_focus on # Move cursor to window selected by keyboard
 yabai -m config mouse_action1 move # LMB + ⌥ + drag to move window
 yabai -m config mouse_action2 resize # RMB + ⌥ + drag to resize window
 yabai -m config mouse_drop_action swap # Swap windows on dragging one onto another
 
 # Disable yabai for particular apps
-UNMANAGED_APPS=("System Settings" Kap Simulator Stickies Calculator Finder Home)
+UNMANAGED_APPS=("System Settings" Kap Simulator Stickies Calculator Finder Home Loom "Raycast Settings" MacGPT)
 for app ("$UNMANAGED_APPS[@]") yabai -m rule --add app=$app manage=off
 
 UNMANAGED_CENTERED_APPS=(Bitwarden Messages Calendar)

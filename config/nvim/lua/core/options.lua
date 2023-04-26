@@ -1,10 +1,11 @@
 local opt = vim.opt
 
+opt.guifont = { "JetBrainsMono Nerd Font", ":h14" }
+
 -- relative line numbers
 opt.number = true
 opt.relativenumber = true
 
- 
 -- tabs
 opt.tabstop = 2
 opt.shiftwidth = 2
@@ -38,5 +39,3 @@ opt.splitbelow = true
 
 -- consider dash a part of the word
 opt.iskeyword:append("-")
-
-

@@ -5,5 +5,7 @@
 	editor = nvim
 [alias]
   remove-merged = !git branch --merged | egrep -v \"(^\\*|master|main|dev)\" | xargs git branch -d
+  a = add
 	s = status --short --branch
-	l = log --oneline
+  l = log --oneline
+  c = commit -m 

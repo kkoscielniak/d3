@@ -49,7 +49,7 @@ for app ("$SPACE_4_APPS[@]") yabai -m rule --add app=$app space=4
 typeset -A SPACE_LABELS
 SPACE_LABELS=(
   1 www
-  2 dev
+  2 code
   3 chat
   4 music
 )

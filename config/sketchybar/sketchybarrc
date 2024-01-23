@@ -10,16 +10,14 @@ sketchybar --bar height=38 \
                  color=0x15ffffff
 
 # Defaults
-sketchybar --default icon.font="Hack Nerd Font:Bold:17.0"  \
-                     icon.color=0xffffffff                 \
-                     label.font="Hack Nerd Font:Bold:14.0" \
-                     label.color=0xffffffff                \
+sketchybar --default icon.font="Hack Nerd Font:Regular:14.0"  \
+                     icon.color=0xffffffff \
                      padding_left=5                        \
                      padding_right=5                       \
-                     label.padding_left=4                  \
-                     label.padding_right=4                 \
-                     icon.padding_left=4                   \
-                     icon.padding_right=4
+                     label.padding_left=2                  \
+                     label.padding_right=2                 \
+                     icon.padding_left=2                   \
+                     icon.padding_right=2
 
 # `yabai` spaces
 
@@ -36,9 +34,12 @@ do
 
   # if [[ $WINDOWS_COUNT -gt 0 ]]; then
     sketchybar --add space $SPACENAME left
-    sketchybar --set $SPACENAME associated_space=$sid icon=${SPACE_ICONS[$i]} label.drawing=off script="$PLUGIN_DIR/space.sh" click_script="yabai -m space --focus $sid"
+    sketchybar --set $SPACENAME associated_space=$sid icon=${SPACE_ICONS[$i]} label.drawing=off script="$PLUGIN_DIR/space.sh" click_script="yabai -m space --focus $sid" 
   # fi
 done
+
+# MenuBar aliases
+# sketchybar --add alias Session right
 
 ##### Adding Left Items #####
 # We add some regular items to the left side of the bar

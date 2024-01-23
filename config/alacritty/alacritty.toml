@@ -1,0 +1,14 @@
+live_config_reload = true
+
+[cursor]
+style = "Underline"
+
+[font]
+size = 14
+
+[font.normal]
+family = "JetbrainsMono Nerd Font"
+
+[window]
+dynamic_title = true
+opacity = 0.95

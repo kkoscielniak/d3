@@ -31,3 +31,13 @@ export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
 # fzf
 source ~/.fzfrc
+
+# bun completions
+[ -s "/Users/krystian/.bun/_bun" ] && source "/Users/krystian/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# rbenv
+eval "$(rbenv init - zsh)"

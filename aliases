@@ -3,5 +3,6 @@ alias ls='lsd'
 alias ll='ls -l'
 alias cat='bat'
 alias p='pwd'
+alias cls='clear'
 
 alias nv=/Applications/Neovide.app/Contents/MacOS/neovide 

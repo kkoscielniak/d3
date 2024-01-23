@@ -56,7 +56,6 @@ SPACE_LABELS=(
 
 for key ("${(@k)SPACE_LABELS}")
 do
-  echo "Labeling space $key as $SPACE_LABELS[$key]"
   yabai -m space $key --label $SPACE_LABELS[$key]
 done
 

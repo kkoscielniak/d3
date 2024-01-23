@@ -1,8 +1,8 @@
 #!/bin/zsh
 
 # Scripting addition reload
-sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
 
 # Global settings
 yabai -m config layout                       bsp
@@ -26,7 +26,7 @@ yabai -m config mouse_action2 resize # RMB + ⌥ + drag to resize window
 yabai -m config mouse_drop_action swap # Swap windows on dragging one onto another
 
 # Disable yabai for particular apps
-UNMANAGED_APPS=("System Settings" Kap Simulator Stickies Calculator Finder Home Loom "Raycast Settings" MacGPT)
+UNMANAGED_APPS=("System Settings" Kap Simulator Stickies Calculator Finder Home Loom "Raycast Settings" MacGPT Telegram Dropshare "Toggl Track" Session Alice "Zelda AI" "zelda-ai-client")
 for app ("$UNMANAGED_APPS[@]") yabai -m rule --add app=$app manage=off
 
 UNMANAGED_CENTERED_APPS=(Bitwarden Messages Calendar)
@@ -36,41 +36,22 @@ for app ("$UNMANAGED_CENTERED_APPS[@]") yabai -m rule --add app=$app manage=off 
 # assign apps to the particular Spaces
 yabai -m rule --add app="Arc" space=1
 
-SPACE_2_APPS=("Parallels Desktop" "Windows 11")
+SPACE_2_APPS=(Code Neovide)
 for app ("$SPACE_2_APPS[@]") yabai -m rule --add app=$app space=2
 
-SPACE_3_APPS=(Code Neovide VSCodium)
+SPACE_3_APPS=(Slack Discord)
 for app ("$SPACE_3_APPS[@]") yabai -m rule --add app=$app space=3
 
-yabai -m rule --add app="Alacritty" space=4
-
-SPACE_5_APPS=(Slack Discord)
-for app ("$SPACE_5_APPS[@]") yabai -m rule --add app=$app space=5
-
-yabai -m rule --add app="^Spotify$" space=6
-
-# Update Sketchybar once an app has been opened/closed
-## TODO: ^
-
-# create up to 9 Mission Control Spaces
-SPACES_COUNT="$(yabai -m query --spaces | jq '. | length')"
-MISSING_SPACES_COUNT=$((9-$SPACES_COUNT))
-
-echo "Creating $MISSING_SPACES_COUNT spaces (if missing)"
-repeat $MISSING_SPACES_COUNT {
-  yabai -m space --create
-}
-
+SPACE_4_APPS=(Spotify)
+for app ("$SPACE_4_APPS[@]") yabai -m rule --add app=$app space=4
 
 # add labels to the Spaces
 typeset -A SPACE_LABELS
 SPACE_LABELS=(
   1 www
   2 dev
-  3 code
-  4 term
-  5 msgs
-  6 music
+  3 chat
+  4 music
 )
 
 for key ("${(@k)SPACE_LABELS}")
@@ -79,4 +60,9 @@ do
   yabai -m space $key --label $SPACE_LABELS[$key]
 done
 
+# Force app windows always on top
+AOT_APPS=(Telegram)
+for app ("$AOT_APPS[@]") yabai -m rule app=$app layer=above
 
+# App-based fixes
+yabai -m rule --add subrole="^AXSystemDialog$" manage=off mouse_follows_focus=off

@@ -17,9 +17,12 @@
     ~/.config/lsd:
       path: config/lsd
       create: true
-    ~/.config/nvim: 
+    ~/.config/nvim:
       path: config/nvim
       create: true
-    ~/.config/sketchybar: 
+    ~/.config/sketchybar:
       path: config/sketchybar
+      create: true
+    ~/.config/borders:
+      path: config/borders
       create: true

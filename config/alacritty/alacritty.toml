@@ -1,3 +1,7 @@
+import = [
+	"~/.config/alacritty/themes/themes/tokyo-night-storm.toml"
+]
+
 live_config_reload = true
 
 [shell]
@@ -15,7 +19,6 @@ dynamic_title = true
 opacity = 1
 dynamic_padding = true
 decorations = "None"
-# option_as_alt = "Both"
 
 [scrolling]
 multiplier = 12

@@ -6,9 +6,6 @@ source $ZPLUG_HOME/init.zsh
 zplug "agkozak/zsh-z"
 zplug load
 
-# run tmux in Alacritty
-if [ "$TERM" = "alacritty" ]; then tmux; fi
-
 source ~/.d3/aliases
 
 # enable nvm

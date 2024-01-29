@@ -40,16 +40,14 @@ done
 
 ### CENTER ###
 
-
+sketchybar --add item media center \
+  --set media script="$PLUGIN_DIR/music.sh" \
+  --subscribe media media_change
 
 ### RIGHT ###
 
-sketchybar --add item clock right --set clock update_freq=10 \
-  script="$PLUGIN_DIR/clock.sh"
-
-
-
-
+sketchybar --add item clock right \
+  --set clock update_freq=10 script="$PLUGIN_DIR/clock.sh" updates=on
 
 # MenuBar aliases
 # sketchybar --add alias Session right

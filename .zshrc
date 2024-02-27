@@ -8,6 +8,9 @@ zplug load
 
 source ~/.d3/aliases
 
+# ensure Homebrew binaries come before macOS defaults:
+export PATH=/usr/local/bin:$PATH
+
 # enable nvm
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm

@@ -4,6 +4,9 @@ import = [
 
 live_config_reload = true
 
+[env]
+TERM = "screen-256color"
+
 [shell]
 program = "/opt/homebrew/bin/tmux"
 args = ["new-session", "-A", "-D", "-s", "main"]
@@ -32,5 +35,5 @@ hide_when_typing = true
 [keyboard]
 bindings = [
 	{ key = "ArrowLeft", mods = "Alt", chars = "\u001bb" },
-	{ key = "ArrowRight", mods = "Alt", chars = "\u001bf" }
+	{ key = "ArrowRight", mods = "Alt", chars = "\u001bf" },
 ]

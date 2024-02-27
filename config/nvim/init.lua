@@ -157,6 +157,7 @@ require('lazy').setup({                      -- NOTE: First, some plugins that d
         desc = 'git diff against last commit'
       })
 
+      -- TODO: Remove or move to Diffview.nvim or somewhere else :)
       -- Toggles
       map('n', '<leader>tb', gs.toggle_current_line_blame, {
         desc = 'toggle git blame line'
@@ -359,6 +360,8 @@ local function telescope_live_grep_open_files()
     prompt_title = 'Live Grep in Open Files'
   }
 end
+
+-- TODO: Move it to separate file
 vim.keymap.set('n', '<leader>s/', telescope_live_grep_open_files, {
   desc = '[S]earch [/] in Open Files'
 })
@@ -371,7 +374,7 @@ vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, {
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, {
   desc = '[S]earch [F]iles'
 })
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, {
+vim.keymap.set('n', '<leader>sH', require('telescope.builtin').help_tags, {
   desc = '[S]earch [H]elp'
 })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, {
@@ -546,7 +549,7 @@ require('which-key').register {
     _ = 'which_key_ignore'
   },
   ['<leader>t'] = {
-    name = '[T]oggle',
+    name = '[T]abs',
     _ = 'which_key_ignore'
   },
   ['<leader>w'] = {

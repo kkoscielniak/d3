@@ -1,8 +1,4 @@
 local opt = vim.opt
-local cmd = vim.cmd
-
--- format on save
--- autocmd BufWritePre * lua vim.lsp.buf.format()
 
 -- relative line numbers
 opt.number = true

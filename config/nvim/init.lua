@@ -171,15 +171,6 @@ require('lazy').setup({                      -- NOTE: First, some plugins that d
       })
     end
   }
-}, {
-  -- Theme inspired by Atom
-  'folke/tokyonight.nvim',
-  lazy = false,
-  priority = 1000,
-  config = function()
-    vim.cmd.set "termguicolors"
-    vim.cmd.colorscheme 'tokyonight-storm'
-  end
 },
   {
     -- Add indentation guides even on blank lines

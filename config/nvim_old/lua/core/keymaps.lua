@@ -42,9 +42,7 @@ keymap.set('n', '<leader>fc', '<cmd>Telescope grep_string<CR>') -- find current 
 keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<CR>') -- find in active buffers 
 keymap.set('n', '<leader>fh', '<cmd>Telescope help_tahs<CR>') -- help :) 
 
-
 -- VS Code habits lol
 -- save file on CMD+S
 keymap.set('i', '<D-s>', '<ESC>:w<CR>')
-
 

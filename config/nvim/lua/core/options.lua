@@ -1,10 +1,14 @@
 local opt = vim.opt
+local cmd = vim.cmd
 
--- relative line numbers 
+-- format on save
+-- autocmd BufWritePre * lua vim.lsp.buf.format()
+
+-- relative line numbers
 opt.number = true
 opt.relativenumber = true
 
--- line wrapping 
+-- line wrapping
 opt.wrap = true
 
 -- tabs
@@ -23,7 +27,7 @@ opt.cursorline = true -- highlight currently edited line
 opt.splitright = true
 opt.splitbelow = true
 
-opt.iskeyword:append("-") -- consider `-` a part of the word
+opt.iskeyword:append("-")           -- consider `-` a part of the word
 
 opt.clipboard:append("unnamedplus") -- sync clipboards
 
@@ -34,3 +38,4 @@ opt.signcolumn = "yes" -- ?
 
 -- TODO what these options do:
 -- opt.backspace = "indent,eol,start" -- ?
+--

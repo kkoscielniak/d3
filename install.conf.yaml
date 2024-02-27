@@ -3,8 +3,10 @@
 - link:
     ~/.zshrc: .zshrc
     ~/.gitconfig: .gitconfig
-    ~/.tmux.conf: .tmux.conf
     ~/.fzfrc: .fzfrc
+    ~/.config/tmux:
+      path: config/tmux
+      create: true
     ~/.config/alacritty:
       path: config/alacritty
       create: true

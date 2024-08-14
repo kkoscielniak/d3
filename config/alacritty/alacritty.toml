@@ -29,9 +29,6 @@ multiplier = 12
 [selection]
 save_to_clipboard = true
 
-[mouse]
-hide_when_typing = true
-
 [keyboard]
 bindings = [
 	{ key = "ArrowLeft", mods = "Alt", chars = "\u001bb" },

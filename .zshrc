@@ -41,3 +41,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # rbenv
 eval "$(rbenv init - zsh)"
+
+# Created by `pipx` on 2024-05-24 21:53:28
+export PATH="$PATH:/Users/krystian/.local/bin"

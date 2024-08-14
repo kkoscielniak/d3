@@ -11,11 +11,11 @@ yabai -m config window_topmost on # Make floating windows always on top
 yabai -m config window_shadow float # Add shadows only to floating window
 
 # Gaps
-yabai -m config top_padding     10
-yabai -m config bottom_padding  10
-yabai -m config left_padding    10
-yabai -m config right_padding   10
-yabai -m config window_gap      10
+yabai -m config top_padding     2
+# yabai -m config bottom_padding  10
+# yabai -m config left_padding    10
+# yabai -m config right_padding   10
+yabai -m config window_gap      4
 yabai -m config external_bar main:38:0 # Adds padding for sketchybar on external display only
 
 # Mouse settings
@@ -26,7 +26,7 @@ yabai -m config mouse_action2 resize # RMB + ⌥ + drag to resize window
 yabai -m config mouse_drop_action swap # Swap windows on dragging one onto another
 
 # Disable yabai for particular apps
-UNMANAGED_APPS=("System Settings" Kap Simulator Stickies Calculator Finder Home Loom "Raycast Settings" MacGPT Telegram Dropshare "Toggl Track" Session Alice "Zelda AI" "zelda-ai-client")
+UNMANAGED_APPS=("System Settings" Kap Simulator Stickies Calculator Finder Home Loom "Raycast Settings" MacGPT Telegram Dropshare "Toggl Track" Session Alice "Zelda AI" "zelda-ai-client" TextEdit)
 for app ("$UNMANAGED_APPS[@]") yabai -m rule --add app=$app manage=off
 
 UNMANAGED_CENTERED_APPS=(Bitwarden Messages Calendar)
@@ -45,6 +45,9 @@ for app ("$SPACE_3_APPS[@]") yabai -m rule --add app=$app space=3
 SPACE_4_APPS=(Spotify)
 for app ("$SPACE_4_APPS[@]") yabai -m rule --add app=$app space=4
 
+SPACE_5_APPS=(Obsidian)
+for app ("$SPACE_5_APPS[@]") yabai -m rule --add app=$app space=5
+
 # add labels to the Spaces
 typeset -A SPACE_LABELS
 SPACE_LABELS=(
@@ -52,6 +55,7 @@ SPACE_LABELS=(
   2 code
   3 chat
   4 music
+  5 notes
 )
 
 for key ("${(@k)SPACE_LABELS}")

@@ -21,6 +21,9 @@ keymap.set('n', '<leader>sh', '<C-w>s', { desc = "[S]plit [H]orizontally" })
 keymap.set('n', '<leader>se', '<C-w>=', { desc = "Balance [S]plits" })
 keymap.set('n', '<leader>sx', ':close<CR>', { desc = "Close [S]plit" })
 
+-- LSP
+keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { desc = "Smart [r]e[n]ame" })
+
 -- TODO: Fix that
 -- keymap.set("n", "d", "_d")
 -- keymap.set("n", "x", "d")

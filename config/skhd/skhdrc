@@ -1,73 +1,11 @@
-# SPACES
-
-## Focus space
-alt - 1: yabai -m space --focus 1
-alt - 2: yabai -m space --focus 2
-alt - 3: yabai -m space --focus 3
-alt - 4: yabai -m space --focus 4
-alt - 5: yabai -m space --focus 5
-alt - 6: yabai -m space --focus 6
-alt - 7: yabai -m space --focus 7
-alt - 8: yabai -m space --focus 8
-alt - 9: yabai -m space --focus 9
-alt - 0: yabai -m space --focus 10 # Full screen app
-
-## Toggle space between float and bsp
-shift + lalt - s: yabai -m space --layout \
-  $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
-
-## Toggle gaps
-shift + lalt - g: yabai -m space --toggle padding && yabai -m space --toggle gap
-
-# WINDOWS
-
 ## Change focused window
-lalt - h: yabai -m window --focus west # L⌥ + h focuses window on the left
-lalt - j: yabai -m window --focus south
-lalt - k: yabai -m window --focus north
-lalt - l: yabai -m window --focus east
+lalt - h: aerospace focus left
+lalt - j: aerospace focus down
+lalt - k: aerospace focus up
+lalt - l: aerospace focus right
 
 ## Swap windows
-shift + lalt - h: yabai -m window --swap west # ⇧ + L⌥ swaps window with the one on the left
-shift + lalt - j: yabai -m window --swap south
-shift + lalt - k: yabai -m window --swap north
-shift + lalt - l: yabai -m window --swap east
-
-## Move windows and split
-ctrl + lalt - h: yabai -m window --warp west # ⌃ + L⌥ => ?
-ctrl + lalt - j: yabai -m window --warp south
-ctrl + lalt - k: yabai -m window --warp north
-ctrl + lalt - l: yabai -m window --warp east
-
-## Modify the current windows layout
-shift + lalt - r: yabai -m space --rotate 270 # Rotate layout clockwise
-shift + lalt - y: yabai -m space --mirror y-axis # Flip along Y
-shift + lalt - x: yabai -m space --mirror x-axis # Flip along X
-lalt - 0x32: yabai -m window --toggle float --grid 4:4:1:1:2:2 # L⌥ + ~ toggles window between float/bsp
-shift + lalt - e: yabai -m space --balance # Rebalance windows
-shift + lalt - m: yabai -m window --toggle zoom-fullscreen # Maximize window
-
-## Move windows between spaces and focus to the target space
-shift + lalt - p: yabai -m window --space prev && yabai -m space --focus prev
-shift + lalt - n: yabai -m window --space next &&  yabai -m space --focus next
-shift + lalt - 1: yabai -m window --space 1 && yabai -m space --focus 1
-shift + lalt - 2: yabai -m window --space 2 && yabai -m space --focus 2
-shift + lalt - 3: yabai -m window --space 3 && yabai -m space --focus 3
-shift + lalt - 4: yabai -m window --space 4 && yabai -m space --focus 4
-shift + lalt - 5: yabai -m window --space 5 && yabai -m space --focus 5
-shift + lalt - 6: yabai -m window --space 6 && yabai -m space --focus 6
-shift + lalt - 7: yabai -m window --space 7 && yabai -m space --focus 7
-shift + lalt - 8: yabai -m window --space 8 && yabai -m space --focus 8
-shift + lalt - 9: yabai -m window --space 9 && yabai -m space --focus 9
-
-## Toggle Native Full Screen mode
-lalt - 0x24: yabai -m window --toggle native-fullscreen
-
-## Apps
-shift + lalt - 0x24: /Applications/Alacritty.app/Contents/MacOS/alacritty
-
-# OTHERS
-
-cmd + lalt - 0: yabai --restart-service # ⇧ + L⌥ + 0 restarts `yabai`
-cmd + lalt - 0x1B: skhd --restart-service # ⇧ + L⌥ + `-` restarts `skhd`
-cmd + lalt - 0x18: brew services restart sketchybar # ⇧ + L⌥ + `=` restarts `sketchybar`
+shift + lalt - h: aerospace move left
+shift + lalt - j: aerospace move down
+shift + lalt - k: aerospace move up
+shift + lalt - l: aerospace move right

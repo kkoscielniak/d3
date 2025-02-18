@@ -1,13 +1,8 @@
-import = [
-	"~/.config/alacritty/themes/themes/tokyo-night-storm.toml"
-]
-
-live_config_reload = true
 
 [env]
 TERM = "screen-256color"
 
-[shell]
+[terminal.shell]
 program = "/opt/homebrew/bin/tmux"
 args = ["new-session", "-A", "-D", "-s", "main"]
 
@@ -34,3 +29,12 @@ bindings = [
 	{ key = "ArrowLeft", mods = "Alt", chars = "\u001bb" },
 	{ key = "ArrowRight", mods = "Alt", chars = "\u001bf" },
 ]
+
+[general]
+
+live_config_reload = true
+import = [
+	"~/.config/alacritty/themes/themes/tokyo-night-storm.toml"
+]
+
+[terminal]

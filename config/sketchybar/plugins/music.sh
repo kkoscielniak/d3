@@ -4,7 +4,7 @@
 state="$(echo "$INFO" | jq -r '.state')"
 
 if [ "$state" = "playing" ]; then
-  media="$(echo "$INFO" | jq -r '.app + ": " + .title + " - " + .artist')"
+  media="$(echo "$INFO" | jq -r '.artist + "/" + .title')"
   sketchybar --set $NAME label="$media" drawing=on
 else
   sketchybar --set $NAME drawing=off

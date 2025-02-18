@@ -10,8 +10,8 @@
     ~/.config/alacritty:
       path: config/alacritty
       create: true
-    ~/.config/yabai:
-      path: config/yabai
+    ~/.config/aerospace:
+      path: config/aerospace
       create: true
     ~/.config/skhd:
       path: config/skhd

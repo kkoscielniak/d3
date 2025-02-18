@@ -1,56 +1,61 @@
-# https://github.com/FelixKratz/dotfiles
-
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 
+# Theme
+export COLOR_BAR=0xff1f2335 
+export COLOR_WHITE=0xffffffff
+export PADDING_ITEM=5
+
 # Appearance
-sketchybar --bar height=38 \
-                 blur_radius=30   \
-                 padding_left=10 \
-                 padding_right=10 \
-                 color=0x15ffffff
+sketchybar --bar display=main \
+                 height=38 \
+                 padding_left=5 \
+                 padding_right=5 \
+                 blur_radius=0  \
+                 color=$COLOR_BAR
+                 
 
 # Defaults
-sketchybar --default label.font="Hack Nerd Font:Regular:14.0" \
-  icon.font="Hack Nerd Font:Regular:14.0"  \
-  icon.color=0xffffffff \
-  padding_left=5                        \
-  padding_right=5                       \
-  label.padding_left=2                  \
-  label.padding_right=2                 \
-  icon.padding_left=2                   \
+sketchybar --default label.font="JetBrainsMono Nerd Font:Regular:14.0" \
+  icon.font="sketchybar-app-font:Regular:14.0"  \
+  icon.color=$COLOR_WHITE \
+  label.color=$COLOR_WHITE \
+  padding_left=$PADDING_ITEM \
+  padding_right=$PADDING_ITEM \
+  label.padding_left=2 \
+  label.padding_right=2 \
+  icon.padding_left=2 \
   icon.padding_right=2
 
-# `yabai` spaces
-# https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
+# bracket
 
-# Get space names from `yabai`
-SPACE_ICONS=($(yabai -m query --spaces | jq -cr  '.[] | if (.label | length > 0) then .label else .index end'))
+# aerospace
+sketchybar --add event aerospace_workspace_change
 
-for i in "${!SPACE_ICONS[@]}"
-do
-  sid=$(($i+1))
-  SPACENAME=${SPACE_ICONS[$i]}
-  WINDOWS_COUNT=$(yabai -m query --windows --space $sid | jq length)
-
-  # if [[ $WINDOWS_COUNT -gt 0 ]]; then
-    sketchybar --add space $SPACENAME left
-    sketchybar --set $SPACENAME associated_space=$sid icon=${SPACE_ICONS[$i]} label.drawing=off script="$PLUGIN_DIR/space.sh" click_script="yabai -m space --focus $sid" 
-  # fi
+for SID in $(aerospace list-workspaces --all); do
+  sketchybar --add item space.$SID left \
+      --subscribe space.$SID aerospace_workspace_change \
+      --set space.$SID \
+      icon.font="JetBrainsMono Nerd Font:Regular:14.0" \
+      label.font="sketchybar-app-font:Regular:14.0"  \
+      background.height=20 \
+      background.color=0x44ffcccc \
+      background.corner_radius=4 \
+      icon="$SID" \
+      label.padding_left=8 \
+      label.padding_right=8 \
+      click_script="aerospace workspace $SID" \
+      script="$PLUGIN_DIR/aerospace.sh $SID"
 done
-
-### CENTER ###
-
-sketchybar --add item media center \
-  --set media script="$PLUGIN_DIR/music.sh" \
-  --subscribe media media_change
 
 ### RIGHT ###
 
 sketchybar --add item clock right \
   --set clock update_freq=10 script="$PLUGIN_DIR/clock.sh" updates=on
 
-# MenuBar aliases
-# sketchybar --add alias Session right
+sketchybar --add item media right \
+  --set media script="$PLUGIN_DIR/music.sh" \
+  --subscribe media media_change
+
 
 ##### Adding Left Items #####
 # We add some regular items to the left side of the bar
@@ -67,10 +72,6 @@ sketchybar --add item clock right \
 #                                  icon.drawing=off                  \
 #            --subscribe front_app front_app_switched
 
-#### Adding Right Items #####
-# In the same way as the left items we can add items to the right side.
-# Additional position (e.g. center) are available, see:
-# https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
 
 # Some items refresh on a fixed cycle, e.g. the clock runs its script once
 # every 10s. Other items respond to events they subscribe to, e.g. the
@@ -94,6 +95,8 @@ sketchybar --add item clock right \
 #  --set battery script="$PLUGIN_DIR/battery.sh"       \
 #                update_freq=120                       \
 #  --subscribe battery system_woke power_source_change
+
+
 
 #### Finalizing Setup #####
 # The below command is only needed at the end of the initial configuration to

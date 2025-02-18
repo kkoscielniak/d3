@@ -7,6 +7,9 @@
     ~/.config/tmux:
       path: config/tmux
       create: true
+    ~/.config/ghostty:
+      path: config/ghostty
+      create: true
     ~/.config/alacritty:
       path: config/alacritty
       create: true

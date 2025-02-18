@@ -1,3 +1,3 @@
 #!/bin/sh
 WIFI=$(ipconfig getifaddr en0)
-sketchybar --set $NAME label="${WIFI}"
+sketchybar --set $NAME icon=":wifi:" label="${WIFI}"

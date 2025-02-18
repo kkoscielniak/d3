@@ -1,4 +1,5 @@
 # https://lospec.com/palette-list/tokyo-night
+# https://github.com/kvndrsslr/sketchybar-app-font/tree/main/svgs
 
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 
@@ -14,7 +15,6 @@ sketchybar --bar display=main \
                  height=38 \
                  padding_left=0 \
                  padding_right=0 \
-                 blur_radius=$BACKGROUND_HEIGHT  \
                  color=$COLOR_BAR
                  
 
@@ -52,6 +52,16 @@ sketchybar --add bracket bspaces '/space\..*/'   \
                background.drawing=on \
                background.height=$BACKGROUND_HEIGHT
 
+## Front App
+sketchybar --add item front_app left \
+           --set front_app script="$PLUGIN_DIR/front_app.sh" \
+           --subscribe front_app front_app_switched
+
+sketchybar --add bracket bapp front_app   \
+  --set bapp background.color=0xff545c7e \
+               background.drawing=on \
+               background.height=$BACKGROUND_HEIGHT
+
 # Right side
 ## Clock
 sketchybar --add item clock right \
@@ -67,6 +77,8 @@ sketchybar --add bracket bclock clock \
 sketchybar --add item wifi right                               \
  --set wifi update_freq=60 updates=on script="$PLUGIN_DIR/wifi.sh" \
        label.color=$COLOR_BLACK \
+       icon.color=$COLOR_BLACK \
+       icon.padding_right=5 \
  --subscribe wifi wifi_change
 
 sketchybar --add bracket bwifi wifi \
@@ -86,12 +98,12 @@ sketchybar --add bracket bvolume volume \
   --set bvolume background.color=0xff7aa2f7\
                background.drawing=on \
                background.height=$BACKGROUND_HEIGHT
-               
-
 
 ## Media
 sketchybar --add item media right \
   --set media script="$PLUGIN_DIR/music.sh" \
+    icon=":playing:" \
+    icon.padding_right=5 \
   --subscribe media media_change
 
 sketchybar --add bracket bmedia media \
@@ -101,16 +113,7 @@ sketchybar --add bracket bmedia media \
 
 
 ##### Adding Left Items #####
-# sketchybar --add item space_separator left                         \
-#            --set space_separator icon=                            \
-#                                  padding_left=10                   \
-#                                  padding_right=10                  \
-#                                  label.drawing=off                 \
-#                                                                    \
-#            --add item front_app left                               \
-#            --set front_app       script="$PLUGIN_DIR/front_app.sh" \
-#                                  icon.drawing=off                  \
-#            --subscribe front_app front_app_switched
+
 
 #  --add item battery right                            \
 #  --set battery script="$PLUGIN_DIR/battery.sh"       \
